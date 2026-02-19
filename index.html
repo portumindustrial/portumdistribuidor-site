@@ -40,6 +40,7 @@
       grid-template-columns:auto 1fr auto;
       align-items:center;
       gap:18px;
+      position:relative;
     }
 
     .brand img{
@@ -158,6 +159,81 @@
     footer a{color:#fff;text-decoration:underline}
     footer a:hover{opacity:.9}
 
+    /* Botão do menu (hambúrguer) - aparece só no mobile */
+    .menu-btn{
+      display:none;
+      background:transparent;
+      border:1px solid var(--line);
+      border-radius:10px;
+      padding:10px 12px;
+      font-size:14px;
+      font-weight:600;
+      cursor:pointer;
+      justify-self:center;
+    }
+    .menu-btn:hover{ border-color: var(--orange); }
+
+    /* ===== Melhorias Mobile (responsivo) ===== */
+    @media(max-width:760px){
+      :root{ --header-h:120px; }
+
+      .nav{
+        height:var(--header-h);
+        grid-template-columns:auto 1fr auto;
+        padding:10px 14px;
+        gap:10px;
+        align-items:center;
+      }
+
+      .brand img{ height:84px; }
+
+      .menu-btn{
+        display:inline-flex;
+        align-items:center;
+        gap:8px;
+      }
+
+      nav{
+        display:none;
+        position:absolute;
+        left:0; right:0;
+        top:var(--header-h);
+        background:#fff;
+        border-bottom:1px solid var(--line);
+        padding:10px 14px 14px;
+        justify-content:flex-start;
+        gap:10px;
+        flex-direction:column;
+      }
+
+      nav.open{ display:flex; }
+
+      nav a{
+        font-size:16px;
+        padding:10px 6px;
+        width:100%;
+        border-bottom:1px solid rgba(0,0,0,0.06);
+      }
+
+      nav a:hover{ border-bottom-color: rgba(0,0,0,0.06); }
+
+      .lang img{ width:22px; height:22px; }
+
+      section{
+        max-width:100%;
+        padding: 16px 16px 10px;
+      }
+
+      section:first-of-type{
+        padding-top: calc(var(--header-h) + 18px);
+      }
+
+      .anchor{scroll-margin-top:calc(var(--header-h) + 10px)}
+      h1,h2{ font-size:22px; }
+      p,ul{ font-size:15.5px; }
+    }
+
+    /* Ajustes intermediários (tablet / telas menores) */
     @media(max-width:900px){
       :root{--header-h:170px}
       .brand img{height:150px}
@@ -166,17 +242,6 @@
       section:first-of-type{padding-top: calc(var(--header-h) + 12px)}
       p,ul{font-size:16.5px}
       .anchor{scroll-margin-top:calc(var(--header-h) + 12px)}
-    }
-
-    @media(max-width:600px){
-      :root{--header-h:155px}
-      .brand img{height:130px}
-      nav{gap:18px}
-      nav a{font-size:15px}
-      section{max-width:680px;padding: 18px 18px 10px}
-      section:first-of-type{padding-top: calc(var(--header-h) + 10px)}
-      p,ul{font-size:16px;margin-bottom:6px}
-      .anchor{scroll-margin-top:calc(var(--header-h) + 10px)}
     }
   </style>
 </head>
@@ -189,7 +254,9 @@
       <img src="logo.png" alt="Portum Distribuidor Industrial">
     </div>
 
-    <nav>
+    <button class="menu-btn" id="menuBtn" type="button">☰ Menu</button>
+
+    <nav id="mainNav">
       <a href="#quem" data-pt="Quem somos" data-en="Who we are" data-es="Quiénes somos">Quem somos</a>
       <a href="#fazemos" data-pt="O que fazemos" data-en="What we do" data-es="Qué hacemos">O que fazemos</a>
       <a href="#parceiro" data-pt="Como geramos valor" data-en="How we create value" data-es="Cómo generamos valor">Como geramos valor</a>
@@ -242,7 +309,7 @@
   <p data-pt="Nossa atuação é direcionada à criação de canais estruturados de venda, permitindo que a indústria amplie sua presença de mercado com menor necessidade de estrutura comercial própria."
      data-en="Our work is focused on building structured sales channels, enabling manufacturers to expand market presence with less need for their own commercial structure."
      data-es="Nuestra actuación se orienta a crear canales de venta estructurados, permitiendo que la industria amplíe su presencia de mercado con menor necesidad de estructura comercial propia.">
-    Nossa atuação é direcionada à criação de canais estruturados de venda, permitindo que a indústria amplie sua presença de mercado com menor necessidade de estrutura comercial própria.
+    Nossa atuação é direcionada à criação de canais estruturados de venda, permitindo que a indústria amplíe sua presença de mercado com menor necessidade de estrutura comercial própria.
   </p>
 </section>
 
@@ -372,6 +439,17 @@
     })
     document.documentElement.lang = lang === 'pt' ? 'pt-br' : lang
   }
+
+  const menuBtn = document.getElementById('menuBtn');
+  const navEl = document.getElementById('mainNav');
+
+  menuBtn.addEventListener('click', () => {
+    navEl.classList.toggle('open');
+  });
+
+  navEl.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click', ()=> navEl.classList.remove('open'));
+  });
 </script>
 
 </body>
