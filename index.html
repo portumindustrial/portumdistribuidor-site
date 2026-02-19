@@ -1,138 +1,378 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Portum | Distribuidor Industrial</title>
-  <meta name="description" content="Portum Distribuidor Industrial. EPIs e calçados de segurança. Atendimento via WhatsApp e e-mail." />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portum Distribuidor Industrial</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0b1220; --bg2:#070b14; --card:rgba(255,255,255,.06);
-      --border:rgba(255,255,255,.10); --txt:#e8eefc; --muted:#b8c3e0; --cta:#2dd4bf;
+      --orange:#f4b400;
+      --black:#111;
+      --gray:#555;
+      --line:#eee;
+      --header-h:200px;
     }
-    *{box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-    body{margin:0;color:var(--txt);background:linear-gradient(180deg,var(--bg),var(--bg2))}
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:1100px;margin:0 auto;padding:24px}
-    .nav{display:flex;justify-content:space-between;align-items:center;gap:16px;position:sticky;top:0;background:rgba(11,18,32,.75);backdrop-filter:blur(10px);padding:14px 0}
-    .brand{font-weight:900;letter-spacing:.6px}
-    .menu{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-weight:700}
-    .menu a{padding:8px 10px;border-radius:12px}
-    .menu a:hover{background:rgba(255,255,255,.06)}
-    .hero{padding:48px 0 18px;display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
-    h1{font-size:42px;line-height:1.05;margin:0 0 14px}
-    p{margin:0 0 14px;line-height:1.6;color:var(--muted)}
-    .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:14px;font-weight:900;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06)}
-    .btn.cta{background:var(--cta);color:#041016;border:none}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:16px}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .section{padding:26px 0}
-    .section h2{margin:0 0 12px;font-size:26px}
-    .muted{color:var(--muted)}
-    .kpi{display:grid;gap:10px}
-    .kpi div{padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08)}
-    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .ph{aspect-ratio: 4/3;border-radius:16px;border:1px dashed rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.55);background:rgba(255,255,255,.03)}
-    .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    footer{padding:24px 0 42px;color:var(--muted);font-size:14px}
-    @media (max-width: 900px){
-      .hero{grid-template-columns:1fr}
-      .grid,.gallery,.two{grid-template-columns:1fr}
-      h1{font-size:34px}
-      .nav{position:relative}
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',sans-serif;
+      color:var(--black);
+      background:#fff;
+      line-height:1.52;
+    }
+
+    header{
+      position:fixed;
+      top:0;left:0;right:0;
+      background:#fff;
+      border-bottom:1px solid var(--line);
+      z-index:10;
+    }
+
+    .nav{
+      max-width:1180px;
+      margin:0 auto;
+      height:var(--header-h);
+      padding:12px 22px;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:18px;
+    }
+
+    .brand img{
+      height:180px;
+      width:auto;
+      display:block;
+      object-fit:contain;
+    }
+
+    nav{
+      display:flex;
+      justify-content:center;
+      gap:32px;
+      flex-wrap:wrap;
+    }
+
+    nav a{
+      text-decoration:none;
+      color:var(--black);
+      font-size:18px;
+      font-weight:500;
+      padding:6px 0;
+      border-bottom:3px solid transparent;
+    }
+
+    nav a:hover{
+      border-bottom-color:var(--orange);
+    }
+
+    .lang{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      white-space:nowrap;
+    }
+
+    .lang img{
+      width:24px;
+      height:24px;
+      cursor:pointer;
+      border:1px solid var(--line);
+      border-radius:6px;
+      padding:2px;
+      background:#fff;
+    }
+
+    .lang img:hover{
+      border-color:var(--orange);
+    }
+
+    section{
+      max-width:820px;
+      margin:0 auto;
+      padding: 22px 30px 12px;
+      position:relative;
+      background:#fff;
+    }
+
+    section:first-of-type{
+      padding-top: calc(var(--header-h) + 14px);
+    }
+
+    section::before{
+      content:"";
+      position:absolute;
+      left:0;right:0;
+      top:0;
+      height:1px;
+      background:linear-gradient(90deg,transparent,rgba(0,0,0,0.08),transparent);
+    }
+
+    .anchor{scroll-margin-top:calc(var(--header-h) + 14px)}
+
+    h1,h2{
+      font-size:28px;
+      font-weight:500;
+      margin-bottom:10px;
+    }
+
+    p{
+      font-size:17px;
+      color:var(--gray);
+      margin-bottom:6px;
+    }
+
+    .divider{
+      width:48px;
+      height:4px;
+      background:var(--orange);
+      margin:10px 0 12px;
+    }
+
+    .lead{
+      color:var(--black);
+      font-weight:500;
+    }
+
+    ul{
+      margin: 6px 0 8px 18px;
+      color: var(--gray);
+      font-size:17px;
+    }
+
+    li{margin:6px 0}
+
+    footer{
+      background:var(--orange);
+      color:#fff;
+      padding:28px 20px;
+      text-align:center;
+      font-size:14px;
+    }
+
+    a{color:var(--black)}
+    a:hover{color:var(--orange)}
+    footer a{color:#fff;text-decoration:underline}
+    footer a:hover{opacity:.9}
+
+    @media(max-width:900px){
+      :root{--header-h:170px}
+      .brand img{height:150px}
+      nav a{font-size:16px}
+      section{max-width:760px;padding: 20px 22px 12px}
+      section:first-of-type{padding-top: calc(var(--header-h) + 12px)}
+      p,ul{font-size:16.5px}
+      .anchor{scroll-margin-top:calc(var(--header-h) + 12px)}
+    }
+
+    @media(max-width:600px){
+      :root{--header-h:155px}
+      .brand img{height:130px}
+      nav{gap:18px}
+      nav a{font-size:15px}
+      section{max-width:680px;padding: 18px 18px 10px}
+      section:first-of-type{padding-top: calc(var(--header-h) + 10px)}
+      p,ul{font-size:16px;margin-bottom:6px}
+      .anchor{scroll-margin-top:calc(var(--header-h) + 10px)}
     }
   </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <header class="nav">
-      <div class="brand">PORTUM</div>
-      <nav class="menu">
-        <a href="#inicio">Início</a>
-        <a href="#produtos">Produtos</a>
-        <a href="#fotos">Fotos</a>
-        <a href="#sobre">Sobre</a>
-        <a href="#contato">Contato</a>
-      </nav>
-    </header>
 
-    <main id="inicio" class="hero">
-      <div>
-        <h1>Site institucional simples,<br/>rápido e profissional.</h1>
-        <p>
-          Portum Distribuidor Industrial — foco em EPIs e calçados de segurança.
-          Atendimento ágil para empresas e órgãos públicos.
-        </p>
-        <div class="btns">
-          <a class="btn cta" href="https://wa.me/5527998636546" target="_blank" rel="noopener">WhatsApp</a>
-          <a class="btn" href="mailto:portum.industrial@gmail.com">E-mail</a>
-          <a class="btn" href="#contato">Contato</a>
-        </div>
-      </div>
+<header>
+  <div class="nav">
+    <div class="brand">
+      <img src="logo.png" alt="Portum Distribuidor Industrial">
+    </div>
 
-      <aside class="card">
-        <div class="kpi">
-          <div><b>Atendimento</b><br><span class="muted">Serra/ES • Envio para todo Brasil</span></div>
-          <div><b>WhatsApp</b><br><span class="muted">(27) 99863-6546</span></div>
-          <div><b>E-mail</b><br><span class="muted">portum.industrial@gmail.com</span></div>
-        </div>
-      </aside>
-    </main>
+    <nav>
+      <a href="#quem" data-pt="Quem somos" data-en="Who we are" data-es="Quiénes somos">Quem somos</a>
+      <a href="#fazemos" data-pt="O que fazemos" data-en="What we do" data-es="Qué hacemos">O que fazemos</a>
+      <a href="#parceiro" data-pt="Como geramos valor" data-en="How we create value" data-es="Cómo generamos valor">Como geramos valor</a>
+      <a href="#contato" data-pt="Contato" data-en="Contact" data-es="Contacto">Contato</a>
+    </nav>
 
-    <section id="produtos" class="section">
-      <h2>O que fornecemos</h2>
-      <div class="grid">
-        <div class="card"><b>Botinas e coturnos</b><p>Linhas ocupacionais e táticas, conforme necessidade.</p></div>
-        <div class="card"><b>EPIs complementares</b><p>Itens industriais sob demanda.</p></div>
-        <div class="card"><b>Suporte em licitações</b><p>Organização de documentação e logística.</p></div>
-      </div>
-    </section>
-
-    <section id="fotos" class="section">
-      <h2>Fotos</h2>
-      <p>Troque os blocos abaixo por imagens reais quando quiser.</p>
-      <div class="gallery">
-        <div class="ph">Foto 1</div>
-        <div class="ph">Foto 2</div>
-        <div class="ph">Foto 3</div>
-        <div class="ph">Foto 4</div>
-        <div class="ph">Foto 5</div>
-        <div class="ph">Foto 6</div>
-      </div>
-    </section>
-
-    <section id="sobre" class="section">
-      <h2>Sobre</h2>
-      <div class="card">
-        <p class="muted">
-          PORTUM DISTRIBUIDOR INDUSTRIAL LTDA • CNPJ 48.610.545/0001-46<br/>
-          Rua Quintino Nascimento, 1418 - Carapina Grande - Serra/ES • CEP 29160-041
-        </p>
-      </div>
-    </section>
-
-    <section id="contato" class="section">
-      <h2>Contato</h2>
-      <div class="two">
-        <div class="card">
-          <b>WhatsApp</b>
-          <p><a href="https://wa.me/5527998636546" target="_blank" rel="noopener" style="text-decoration:underline;">Abrir conversa</a></p>
-          <b>E-mail</b>
-          <p><a href="mailto:portum.industrial@gmail.com" style="text-decoration:underline;">portum.industrial@gmail.com</a></p>
-        </div>
-        <div class="card">
-          <b>Observação</b>
-          <p>Site institucional (sem vendas). Ideal para cartão de visita, assinatura de e-mail e credibilidade em propostas.</p>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      © <span id="y"></span> Portum Distribuidor Industrial LTDA.
-    </footer>
+    <div class="lang">
+      <img src="flag-br.png" onclick="setLang('pt')" alt="Português">
+      <img src="flag-uk.png" onclick="setLang('en')" alt="English">
+      <img src="flag-es.png" onclick="setLang('es')" alt="Español">
+    </div>
   </div>
+</header>
 
-  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+<section id="quem" class="anchor">
+  <h1 data-pt="Quem somos" data-en="Who we are" data-es="Quiénes somos">Quem somos</h1>
+  <div class="divider"></div>
+
+  <p class="lead"
+     data-pt="Distribuição industrial orientada à recorrência, escala e conformidade."
+     data-en="Industrial distribution focused on recurrence, scale, and compliance."
+     data-es="Distribución industrial orientada a recurrencia, escala y cumplimiento.">
+    Distribuição industrial orientada à recorrência, escala e conformidade.
+  </p>
+
+  <p data-pt="A Portum Distribuidor Industrial é uma empresa brasileira especializada na estruturação e operação de canais de fornecimento para os mercados B2B (Business to Business) e B2G (Business to Government)."
+     data-en="Portum Distribuidor Industrial is a Brazilian company specialized in structuring and operating supply channels for B2B (Business to Business) and B2G (Business to Government) markets."
+     data-es="Portum Distribuidor Industrial es una empresa brasileña especializada en estructurar y operar canales de suministro para los mercados B2B (Business to Business) y B2G (Business to Government).">
+    A Portum Distribuidor Industrial é uma empresa brasileira especializada na estruturação e operação de canais de fornecimento para os mercados B2B (Business to Business) e B2G (Business to Government).
+  </p>
+
+  <p data-pt="Atuamos conectando fabricantes ao mercado institucional e corporativo, com foco em padronização de demanda, previsibilidade de fornecimento e consolidação comercial."
+     data-en="We connect manufacturers to institutional and corporate markets, focusing on demand standardization, supply predictability, and commercial consolidation."
+     data-es="Conectamos fabricantes con mercados institucionales y corporativos, con foco en estandarización de demanda, previsibilidad de suministro y consolidación comercial.">
+    Atuamos conectando fabricantes ao mercado institucional e corporativo, com foco em padronização de demanda, previsibilidade de fornecimento e consolidação comercial.
+  </p>
+
+  <p data-pt="Estamos localizados em Serra – Espírito Santo, em posição logística estratégica entre os principais polos industriais do Sudeste (São Paulo, Rio de Janeiro e Minas Gerais), com capacidade de atendimento em todo o território nacional."
+     data-en="We are located in Serra, Espírito Santo, in a strategic logistics position between the main industrial hubs of Southeast Brazil (São Paulo, Rio de Janeiro, and Minas Gerais), with nationwide service capability."
+     data-es="Estamos ubicados en Serra, Espírito Santo, en una posición logística estratégica entre los principales polos industriales del Sudeste (São Paulo, Río de Janeiro y Minas Gerais), con capacidad de atención en todo el territorio nacional.">
+    Estamos localizados em Serra – Espírito Santo, em posição logística estratégica entre os principais polos industriais do Sudeste (São Paulo, Rio de Janeiro e Minas Gerais), com capacidade de atendimento em todo o território nacional.
+  </p>
+
+  <p data-pt="Já operamos a distribuição de fabricantes situados em São Paulo e Paraná, com alcance nacional."
+     data-en="We already operate distribution for manufacturers based in São Paulo and Paraná, with nationwide reach."
+     data-es="Ya operamos la distribución de fabricantes ubicados en São Paulo y Paraná, con alcance nacional.">
+    Já operamos a distribuição de fabricantes situados em São Paulo e Paraná, com alcance nacional.
+  </p>
+
+  <p data-pt="Nossa atuação é direcionada à criação de canais estruturados de venda, permitindo que a indústria amplie sua presença de mercado com menor necessidade de estrutura comercial própria."
+     data-en="Our work is focused on building structured sales channels, enabling manufacturers to expand market presence with less need for their own commercial structure."
+     data-es="Nuestra actuación se orienta a crear canales de venta estructurados, permitiendo que la industria amplíe su presencia de mercado con menor necesidad de estructura comercial propia.">
+    Nossa atuação é direcionada à criação de canais estruturados de venda, permitindo que a indústria amplie sua presença de mercado com menor necessidade de estrutura comercial própria.
+  </p>
+</section>
+
+<section id="fazemos" class="anchor">
+  <h2 data-pt="O que fazemos" data-en="What we do" data-es="Qué hacemos">O que fazemos</h2>
+  <div class="divider"></div>
+
+  <p class="lead"
+     data-pt="A Portum atua como canal estruturado de expansão de mercado para fabricantes industriais."
+     data-en="Portum operates as a structured market expansion channel for industrial manufacturers."
+     data-es="Portum actúa como un canal estructurado de expansión de mercado para fabricantes industriales.">
+    A Portum atua como canal estruturado de expansão de mercado para fabricantes industriais.
+  </p>
+
+  <p data-pt="Permitimos que a indústria concentre seus esforços no desenvolvimento e produção, enquanto assumimos:"
+     data-en="We allow manufacturers to focus on development and production, while we take on:"
+     data-es="Permitimos que la industria se enfoque en desarrollo y producción, mientras nosotros asumimos:">
+    Permitimos que a indústria concentre seus esforços no desenvolvimento e produção, enquanto assumimos:
+  </p>
+
+  <ul>
+    <li data-pt="organização da demanda" data-en="demand organization" data-es="organización de la demanda">organização da demanda</li>
+    <li data-pt="posicionamento comercial" data-en="commercial positioning" data-es="posicionamiento comercial">posicionamento comercial</li>
+    <li data-pt="adequação a requisitos técnicos e documentais" data-en="adaptation to technical and documentary requirements" data-es="adecuación a requisitos técnicos y documentales">adequação a requisitos técnicos e documentais</li>
+    <li data-pt="estruturação de fornecimento recorrente" data-en="structuring recurring supply" data-es="estructuración de suministro recurrente">estruturação de fornecimento recorrente</li>
+  </ul>
+
+  <p data-pt="Trabalhamos com produtos industriais e equipamentos de uso profissional, especialmente em contextos que exigem regularidade, conformidade e escala."
+     data-en="We work with industrial products and professional-use equipment, especially in contexts that require regularity, compliance, and scale."
+     data-es="Trabajamos con productos industriales y equipos de uso profesional, especialmente en contextos que exigen regularidad, cumplimiento y escala.">
+    Trabalhamos com produtos industriais e equipamentos de uso profissional, especialmente em contextos que exigem regularidade, conformidade e escala.
+  </p>
+
+  <p data-pt="Nossa operação é direcionada exclusivamente ao fornecimento entre empresas e instituições, não atuando no varejo ou no consumidor final."
+     data-en="Our operation is exclusively focused on supply between companies and institutions, not retail or end consumers."
+     data-es="Nuestra operación se dirige exclusivamente al suministro entre empresas e instituciones, sin actuar en el comercio minorista o consumidor final.">
+    Nossa operação é direcionada exclusivamente ao fornecimento entre empresas e instituições, não atuando no varejo ou no consumidor final.
+  </p>
+</section>
+
+<section id="parceiro" class="anchor">
+  <h2 data-pt="Como geramos valor para fabricantes" data-en="How we create value for manufacturers" data-es="Cómo generamos valor para fabricantes">
+    Como geramos valor para fabricantes
+  </h2>
+  <div class="divider"></div>
+
+  <p class="lead"
+     data-pt="Nosso modelo é orientado à construção de vendas recorrentes, previsíveis e estruturadas."
+     data-en="Our model is focused on building recurring, predictable, and structured sales."
+     data-es="Nuestro modelo se orienta a construir ventas recurrentes, previsibles y estructuradas.">
+    Nosso modelo é orientado à construção de vendas recorrentes, previsíveis e estruturadas.
+  </p>
+
+  <p data-pt="Por meio de análise técnica e comercial de mercado, identificamos:"
+     data-en="Through technical and commercial market analysis, we identify:"
+     data-es="Mediante análisis técnico y comercial del mercado, identificamos:">
+    Por meio de análise técnica e comercial de mercado, identificamos:
+  </p>
+
+  <ul>
+    <li data-pt="padrões de especificação" data-en="specification patterns" data-es="patrones de especificación">padrões de especificação</li>
+    <li data-pt="recorrência de demanda" data-en="demand recurrence" data-es="recurrencia de demanda">recorrência de demanda</li>
+    <li data-pt="volumes por região" data-en="volumes by region" data-es="volúmenes por región">volumes por região</li>
+    <li data-pt="requisitos técnicos" data-en="technical requirements" data-es="requisitos técnicos">requisitos técnicos</li>
+    <li data-pt="oportunidades de escala" data-en="scale opportunities" data-es="oportunidades de escala">oportunidades de escala</li>
+  </ul>
+
+  <p data-pt="Utilizamos ferramentas próprias de automação e softwares desenvolvidos internamente para mapear necessidades de compra em nível nacional, permitindo avaliar:"
+     data-en="We use proprietary automation tools and internally developed software to map nationwide purchasing needs, enabling evaluation of:"
+     data-es="Utilizamos herramientas propias de automatización y software desarrollado internamente para mapear necesidades de compra a nivel nacional, permitiendo evaluar:">
+    Utilizamos ferramentas próprias de automação e softwares desenvolvidos internamente para mapear necessidades de compra em nível nacional, permitindo avaliar:
+  </p>
+
+  <ul>
+    <li data-pt="viabilidade de distribuição" data-en="distribution feasibility" data-es="viabilidad de distribución">viabilidade de distribuição</li>
+    <li data-pt="potencial de escala" data-en="scale potential" data-es="potencial de escala">potencial de escala</li>
+    <li data-pt="aderência técnica" data-en="technical fit" data-es="adecuación técnica">aderência técnica</li>
+    <li data-pt="oportunidades de consolidação comercial" data-en="commercial consolidation opportunities" data-es="oportunidades de consolidación comercial">oportunidades de consolidação comercial</li>
+  </ul>
+
+  <p data-pt="Quando aplicável, fornecemos feedback técnico ao fabricante sobre ajustes simples de especificação que ampliem a competitividade e aplicabilidade do produto."
+     data-en="When applicable, we provide manufacturers with technical feedback on simple specification adjustments that improve competitiveness and applicability."
+     data-es="Cuando aplica, brindamos feedback técnico al fabricante sobre ajustes simples de especificación que aumenten la competitividad y aplicabilidad del producto.">
+    Quando aplicável, fornecemos feedback técnico ao fabricante sobre ajustes simples de especificação que ampliem a competitividade e aplicabilidade do produto.
+  </p>
+
+  <p data-pt="Nosso objetivo é transformar demanda pulverizada em fornecimento estruturado, previsível e recorrente."
+     data-en="Our goal is to turn fragmented demand into structured, predictable, recurring supply."
+     data-es="Nuestro objetivo es transformar la demanda dispersa en un suministro estructurado, previsible y recurrente.">
+    Nosso objetivo é transformar demanda pulverizada em fornecimento estruturado, previsível e recorrente.
+  </p>
+</section>
+
+<section id="contato" class="anchor">
+  <h2 data-pt="Contato" data-en="Contact" data-es="Contacto">Contato</h2>
+  <div class="divider"></div>
+
+  <p class="lead"
+     data-pt="Fale conosco para parcerias comerciais e informações institucionais."
+     data-en="Contact us for commercial partnerships and institutional information."
+     data-es="Contáctenos para alianzas comerciales e información institucional.">
+    Fale conosco para parcerias comerciais e informações institucionais.
+  </p>
+
+  <p>
+    <strong>PORTUM DISTRIBUIDOR INDUSTRIAL LTDA</strong><br>
+    CNPJ: 48.610.545/0001-46<br>
+    Serra – Espírito Santo – Brasil
+  </p>
+
+  <p>
+    <a href="mailto:portum.industrial@gmail.com">portum.industrial@gmail.com</a><br>
+    <a href="tel:+5527998636546">+55 27 99863-6546</a><br>
+    <a href="https://wa.me/5527998636546" target="_blank" rel="noopener">WhatsApp (contato comercial)</a>
+  </p>
+</section>
+
+<footer>
+  Portum Distribuidor Industrial | Copyright © 2026 - Todos os direitos Reservados.
+</footer>
+
+<script>
+  function setLang(lang){
+    document.querySelectorAll('[data-pt]').forEach(el=>{
+      const v = el.getAttribute('data-'+lang)
+      if(v) el.textContent = v
+    })
+    document.documentElement.lang = lang === 'pt' ? 'pt-br' : lang
+  }
+</script>
+
 </body>
 </html>
